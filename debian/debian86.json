@@ -4,7 +4,7 @@
         "password": "admindebian",
         "disk_size": "12000",
         "domain": "",
-        "qemu_binary": "/usr/libexec/qemu-kvm"
+        "qemu_binary": "qemu-kvm"
     },
 
     "builders":
