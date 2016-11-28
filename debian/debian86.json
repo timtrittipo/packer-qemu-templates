@@ -3,15 +3,14 @@
         "user": "admindebian",
         "password": "admindebian",
         "disk_size": "12000",
-        "domain": "",
-        "qemu_binary": "qemu-kvm"
+        "domain": ""
     },
 
     "builders":
     [
         {
             "name": "debian83",
-
+            "qemu_binary": "qemu-kvm",
             "type": "qemu",
             "format": "qcow2",
             "accelerator": "kvm",
@@ -19,16 +18,16 @@
             "iso_url": "http://cdimage.debian.org/debian-cd/8.6.0/amd64/iso-cd/debian-8.6.0-amd64-netinst.iso",
             "iso_checksum": "e9f61bf327db6d8f7cee05a99f2353cc",
             "iso_checksum_type": "md5",
-
+            "headless": "true",
             "http_directory": "http",
 
             "ssh_username": "{{user `user`}}",
             "ssh_password": "{{user `password`}}",
             "shutdown_command": "echo '{{user `password`}}'|sudo -S shutdown -h now",
 
-            "ssh_wait_timeout": "60m",
+            "ssh_wait_timeout": "5m",
 
-            "boot_wait": "2s",
+            "boot_wait": "4s",
             "boot_command": [
                    "<esc><wait><wait>",
                    "install auto ",
