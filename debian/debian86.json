@@ -1,7 +1,7 @@
 {
     "variables": {
-        "user": "admindebian",
-        "password": "admindebian",
+        "user": "pi",
+        "password": "pi",
         "disk_size": "16000",
         "domain": ""
     },
@@ -9,7 +9,7 @@
     "builders":
     [
         {
-            "name": "debian83",
+            "name": "debian86",
             "qemu_binary": "qemu-kvm",
             "type": "qemu",
             "format": "qcow2",
