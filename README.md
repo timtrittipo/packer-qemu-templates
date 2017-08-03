@@ -1,4 +1,4 @@
-##Introduction
+## Introduction
 
 The packer-qemu-templates provides Packer templates for unattended building of
 relevant virtual machine images in the qcow2 format for use with KVM.
@@ -7,15 +7,15 @@ In addition, all templates for use with Vagrant, through [vagrant-libvirt](https
 
 More info: http://blog.aarhusworks.com/unattended-installation-of-vm-images-with-packer/
 
-##Status
+## Status
 
 Currently the project includes templates for Ubuntu, CentOS, Debian and Windows. In other words, the OSes of the VMs I and the other contributors use on a day-to-day basis.
 
 Feel free to contribute more:-) 
 
-##Usage
+## Usage
 
-###Build qcow2 image
+### Build qcow2 image
 Go into the relevant template directory and run packer build on
 the relevant json file.
 
@@ -29,12 +29,12 @@ Templates names that ends with vagrant automatically creates a vagrant box.
 Add the box to Vagrant
 
 ```bash
-$ vagrant box add windows-2012-R2-standard.box --name windows-2012-R2-standard
+$ vagrant box add box/windows-2012-R2-standard.box --name windows-2012-R2-standard
 ```
 
 Init vagrantfile
 ```
-$ mkdir project & cd $_
+$ mkdir project && cd $_
 $ vagrant init windows-2012-R2-standard
 ```
 
@@ -48,7 +48,7 @@ Get IP of machine
 $ vagrant ssh-config
 ```
 
-##Acknowledgements
+## Acknowledgements
 
 * [packer-images](https://github.com/opentable/packer-images.git)
 * [packer-windows](https://github.com/joefitzgerald/packer-windows)

@@ -3,7 +3,7 @@
 ; 
 ; Red Hat VirtIO Ethernet Adapter 
 ; 
-; Copyright (c) 2008-2016 Red Hat, Inc.  All rights reserved. 
+; Copyright (c) 2008-2017 Red Hat, Inc.  All rights reserved. 
 ; 
 ;------------------------------------------------------------------------------- 
  
@@ -13,15 +13,16 @@ Class       = Net
 CatalogFile = netkvm.cat 
 ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318} 
 Provider    = %RedHat% 
-DriverVer=04/08/2016,62.73.104.11700 
+DriverVer=03/27/2017,100.74.104.13500
 DriverPackageType = PlugAndPlay 
 DriverPackageDisplayName = %kvmnet6.DeviceDesc% 
  
 [Manufacturer] 
-%RedHat% = RedHat, NTamd64 
+%RedHat% = RedHat, NTamd64.10.0
  
-[RedHat.NTamd64] 
-%kvmnet6.DeviceDesc%    = kvmnet6.ndi, PCI\VEN_1AF4&DEV_1000&SUBSYS_00011AF4&REV_00 
+[RedHat.NTamd64.10.0] 
+%kvmnet6.DeviceDesc%    = kvmnet6.ndi, PCI\VEN_1AF4&DEV_1000&SUBSYS_00011AF4&REV_00
+%kvmnet6.DeviceDesc%    = kvmnet6.ndi, PCI\VEN_1AF4&DEV_1041&SUBSYS_11001AF4&REV_01
  
 [kvmnet6.ndi.hw] 
 AddReg          = kvmnet6.EnableMSI 
@@ -70,7 +71,21 @@ HKR, Ndi\params\*NumRssQueues,          default,    0,          "8"
 HKR, Ndi\params\*NumRssQueues,          min,        0,          "1" 
 HKR, Ndi\params\*NumRssQueues,          max,        0,          "16" 
 HKR, Ndi\params\*NumRssQueues,          step,       0,          "1" 
- 
+
+HKR, Ndi\params\*RscIPv4,             ParamDesc,           0, "Recv Segment Coalescing (IPv4)"
+HKR, Ndi\params\*RscIPv4,             Type,                0, "enum"
+HKR, Ndi\params\*RscIPv4,             Default,             0, "1"
+HKR, Ndi\params\*RscIPv4,             Optional,            0, "0"
+HKR, Ndi\params\*RscIPv4\enum,        "0",                 0, "Disabled"
+HKR, Ndi\params\*RscIPv4\enum,        "1",                 0, "Enabled"
+
+HKR, Ndi\params\*RscIPv6,             ParamDesc,           0, "Recv Segment Coalescing (IPv6)"
+HKR, Ndi\params\*RscIPv6,             Type,                0, "enum"
+HKR, Ndi\params\*RscIPv6,             Default,             0, "1"
+HKR, Ndi\params\*RscIPv6,             Optional,            0, "0"
+HKR, Ndi\params\*RscIPv6\enum,        "0",                 0, "Disabled"
+HKR, Ndi\params\*RscIPv6\enum,        "1",                 0, "Enabled"
+
 [Parameters] 
  
 HKR, Ndi\Params\ConnectRate,        ParamDesc,  0,          %ConnectRate% 
